@@ -3,8 +3,8 @@
 '''
 cc_plugin_ncei/util.py
 '''
-from pkg_resources import resource_filename
 import json
+from importlib_resources import files
 from lxml import etree
 from pkgutil import get_data
 import re
@@ -19,7 +19,7 @@ def get_unitless_standard_names():
     '''
     global _UNITLESS_DB
     if _UNITLESS_DB is None:
-        with open(resource_filename('cc_plugin_ncei', 'data/unitless.json'), 'r') as f:
+        with open(files('cc_plugin_ncei') / 'data/unitless.json', 'r') as f:
             _UNITLESS_DB = json.load(f)
     return _UNITLESS_DB
 
